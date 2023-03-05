@@ -1,0 +1,50 @@
+.body {
+    margin: auto;
+    padding: 10px;
+    border: black solid 3px;
+    width: 400px;
+    height: 300px;
+    background-color: gold;
+    border-radius: 4px;
+}
+
+.count {
+    font-size: 110px;
+    border-radius: 7px;
+    padding: 10px;
+    margin: auto;
+    border: black solid 1px;
+    height: 200px;
+    width: 200px;
+    background-color: tomato;
+}
+
+.button {
+    padding-left: 10px;
+    padding-top: 5px;
+    margin: auto;
+    border: black solid 1px;
+    height: 30px;
+    width: 100px;
+    background-color: hotpink;
+    border-radius: 2px;
+}
+
+button {
+
+    margin-left: 6px;
+    border-radius: 7px;
+    background-color: mediumspringgreen;
+    color: red;
+}
+
+.maxValue {
+
+    font-size: 130px;
+    color: red;
+
+}
+
+.minValue {
+    color: #61dafb;
+}
