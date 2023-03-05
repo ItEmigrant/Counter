@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/Counter/settingsCounter";
+import {UniversalInput} from "./Components/Counter/UniversalInput";
 
 function App() {
     const maxValue = 5
@@ -17,6 +18,7 @@ function App() {
                      count={count} setCount={setCount}/>
             <br/>
             <SettingsCounter/>
+            <UniversalInput/>
         </div>
     );
 }

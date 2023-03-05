@@ -9,7 +9,6 @@
 }
 
 .count {
-    font-size: 110px;
     border-radius: 7px;
     padding: 10px;
     margin: auto;
@@ -36,6 +35,11 @@ button {
     border-radius: 7px;
     background-color: mediumspringgreen;
     color: red;
+}
+input {
+    width: 50px;
+    background-color: #f4b4a2;
+    border-radius: 3px;
 }
 
 .maxValue {
