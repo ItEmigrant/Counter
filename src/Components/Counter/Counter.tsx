@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Counter.module.css'
+import {Button} from "./UniversalButton";
 
 type CounterPropsType = {
     count: number
@@ -34,16 +35,21 @@ export const Counter = (props: CounterPropsType) => {
             - home work -
             <div className={s.button}>
                 <div>
-                    <button
+                    <Button name={"INC"} callBack={onClickIncHandler}
+                            disabled={props.count === props.maxValue}/>
+
+                </div>
+                {/*<button
                         onClick={onClickIncHandler}
                         disabled={props.count === props.maxValue}>
                         INC
-                    </button>
-                </div>
+                    </button>*/}
+
                 <div>
-                    <button onClick={onClickResetHandler}
+                    <Button name={'Rest'} callBack={onClickResetHandler} disabled={props.count === props.minValue}/>
+                    {/*<button onClick={onClickResetHandler}
                             disabled={props.count === props.minValue}>Reset
-                    </button>
+                    </button>*/}
                 </div>
             </div>
 

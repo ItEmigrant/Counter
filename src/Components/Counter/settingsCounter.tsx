@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "./SettingsCounter.module.css";
+import {Button} from "./UniversalButton";
 
 export const SettingsCounter = () => {
 
@@ -14,12 +15,9 @@ export const SettingsCounter = () => {
             - settings for counter-
             <div className={s.button}>
                 <div>
-                    <button
-                        onClick={() => {
-                        }}
-                    >
-                        SETTINGS
-                    </button>
+                    <Button name={'SETTINGS'} callBack={() => {
+                    }} disabled={false}/>
+
                 </div>
 
             </div>
