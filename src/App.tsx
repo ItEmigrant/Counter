@@ -4,19 +4,28 @@ import './App.css';
 import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/Counter/settingsCounter";
 
+
+
 function App() {
-    const maxValue = 5
-    const minValue = 0
 
-    let [count, setCount] = useState(minValue)
+    let [maxValue, setMaxValue] = useState(5);
+    let [minValue, setMinValue] = useState(0);
 
+    let [max, setMax] = useState();
+    let [min, setMin] = useState();
+
+    let [count, setCount] = useState(minValue);
+
+  const updateState =()=> {
+
+  }
 
     return (
         <div className="App">
             <Counter maxValue={maxValue} minValue={minValue}
                      count={count} setCount={setCount}/>
             <br/>
-            <SettingsCounter/>
+            <SettingsCounter updateState={ updateState} />
 
         </div>
     );

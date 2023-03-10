@@ -29,13 +29,14 @@
     border-radius: 2px;
 }
 
-button {
 
+button {
     margin-left: 6px;
     border-radius: 7px;
     background-color: mediumspringgreen;
     color: red;
 }
+
 input {
     width: 50px;
     background-color: #f4b4a2;

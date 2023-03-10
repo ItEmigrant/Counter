@@ -7,24 +7,17 @@ type CounterPropsType = {
     minValue: number
     maxValue: number
     setCount: (count: number) => void
+
 }
 
 export const Counter = (props: CounterPropsType) => {
-
-
     const onClickIncHandler = () => {
-
         props.setCount(props.count + 1)
-
-
     }
     const onClickResetHandler = () => {
         props.setCount(props.minValue)
-
     }
-
     return (
-
         <div className={s.body}> COUNTER
             <div className={s.count}>
                 <div
