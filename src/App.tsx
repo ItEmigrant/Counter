@@ -11,18 +11,32 @@ function App() {
     let [maxValue, setMaxValue] = useState(5);
     let [minValue, setMinValue] = useState(0);
 
+    let [max, setMax] = useState(maxValue);
+    let [min, setMin] = useState(minValue);
 
     let [count, setCount] = useState(minValue);
+
+
+    const updateSettings = () => {
+            setMin(minValue)
+        setMax(maxValue)
+        setCount(minValue)
+    }
+
+
+
 
 
 
     return (
         <div className="App">
-            <Counter maxValue={maxValue} minValue={minValue}
+            <Counter maxValue={max} minValue={min}
                      count={count} setCount={setCount}/>
             <br/>
-            <SettingsCounter setMinValue={setMinValue}  minValue={minValue}
-                             setMaxValue={setMaxValue}  maxValue={maxValue}/>
+            <SettingsCounter setMinValue={setMinValue}
+                             setMaxValue={setMaxValue}
+                             updateSettings={updateSettings}
+            />
 
         </div>
     );

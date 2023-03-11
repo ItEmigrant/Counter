@@ -4,10 +4,9 @@ import {Button} from "./UniversalButton";
 
 type SettingsCounterPropsType = {
     setMinValue: (newValue: number) => void
-    minValue: number
-
     setMaxValue: (newValue: number) => void
-    maxValue: number
+    updateSettings:()=>void
+
 }
 
 export const SettingsCounter = (props: SettingsCounterPropsType) => {
@@ -20,9 +19,10 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
         props.setMaxValue(Number(e.currentTarget.value))
     }
 
-    const onClickResetHandler = () => {
-        props.setMaxValue(props.maxValue)
+    const addSettings = () => {
+            props.updateSettings()
     }
+
 
     return (
         <div className={s.body}> SETTINGS
@@ -39,7 +39,7 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
             <div className={s.button}>
                 <div>
 
-                    <Button name={'SETTINGS'} callBack={onClickResetHandler} disabled={false}/>
+                    <Button name={'SETTINGS'} callBack={addSettings} disabled={false}/>
                 </div>
 
             </div>
