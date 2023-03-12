@@ -53,3 +53,9 @@ input {
 .minValue {
     color: #61dafb;
 }
+
+.error {
+    border-radius: 3px;
+   border: red;
+
+}

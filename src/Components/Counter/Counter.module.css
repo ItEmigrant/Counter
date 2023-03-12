@@ -40,12 +40,17 @@ button {
 }
 
 .maxValue{
-
     font-size: 130px;
-    color: red;
-
+    color: #ff0000;
 }
 
 .minValue{
     color: #61dafb;
+}
+
+.error{
+
+    font-size: 30px;
+    color: #0008ff;
+
 }
