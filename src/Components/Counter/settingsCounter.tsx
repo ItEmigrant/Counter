@@ -1,6 +1,11 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, FocusEvent} from 'react';
 import s from "./SettingsCounter.module.css";
 import {Button} from "./UniversalButton";
+
+
+
+
+
 
 type SettingsCounterPropsType = {
     setMinValue: (newValue: number) => void
@@ -8,7 +13,7 @@ type SettingsCounterPropsType = {
     updateSettings: () => void
     maxValue: number
     minValue: number
-    hasError:boolean
+
 
 }
 
@@ -23,22 +28,32 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
 
     }
 
-
-
     const addSettings = () => {
         props.updateSettings()
-
     }
+
+const showError =(e:FocusEvent<HTMLInputElement>)=> {
+        let hasError:boolean = Number(e.currentTarget.value) == props.maxValue ||
+            Number(e.currentTarget.value)<0 || Number(e.currentTarget.value)>props.maxValue;
+
+       return  hasError ? s.input1 : ''
+
+
+}
+  /* const showError = props.hasError ?  s.input : '';*/
+
+
+
 
     return (
         <div className={s.body}> SETTINGS
             <div className={s.count}>
                 <h4>
-                    {props.hasError ? <div className={s.error}> <div>max value: <input type="number" value={props.maxValue} onChange={updateMaxValue} /></div></div> :<div>max value: <input type="number" value={props.maxValue} onChange={updateMaxValue} /></div>}
+                    <div>max value: <input onFocus={showError} type="number" value={props.maxValue} onChange={updateMaxValue} autoFocus/> </div>
                 </h4>
 
                 <h4>
-                    <div>min value: <input type="number" value={props.minValue} onChange={updateMinValue}/></div>
+                    <div>min value:<input onFocus={showError} type="number" value={props.minValue} onChange={updateMinValue} /> </div>
                 </h4>
             </div>
             - settings for counter-

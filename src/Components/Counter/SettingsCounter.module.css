@@ -48,14 +48,15 @@ input {
     font-size: 130px;
     color: red;
 
+
 }
 
 .minValue {
     color: #61dafb;
 }
 
-.error {
-    border-radius: 3px;
-   border: red;
+.input1 {
+    border: 4px red solid;
+    background-color: deeppink;
 
 }

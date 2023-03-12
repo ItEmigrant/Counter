@@ -53,8 +53,6 @@ function App() {
                              maxValue={maxValue}
                              minValue={minValue}
 
-                             hasError={hasError}
-
 
             />
 
