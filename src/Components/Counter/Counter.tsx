@@ -4,21 +4,20 @@ import {Button} from "./UniversalButton";
 
 
 type CounterPropsType = {
-    count: number
+    count: number | string
     minValue: number
     maxValue: number
-    setCount: (count: number) => void
+    setCount: (count: number | string) => void
     min: number
     max: number
-    hasError:boolean
+    hasError: boolean
 }
 
 export const Counter = (props: CounterPropsType) => {
 
 
-
     const onClickIncHandler = () => {
-        props.setCount(props.count + 1)
+        props.setCount(+props.count + 1)
 
     }
     const onClickResetHandler = () => {
@@ -35,7 +34,15 @@ export const Counter = (props: CounterPropsType) => {
 
                     {/*     <div> {props.error ? <div className={s.error}>{props.error}</div> : props.count} </div> ///realised with useEffect*/}
 
-                    {props.hasError ? <div className={s.error}>Incorrect Value!</div> : props.count}
+
+                    {
+                        props.hasError
+                            ? <div className={s.error}>
+                                Incorrect Value!
+                            </div>
+                            : <div
+                                className={props.count === 'Type value and enter settings' ? s.info : ''}>{props.count}</div>
+                    }
                 </div>
 
             </div>

@@ -49,8 +49,11 @@ button {
 }
 
 .error{
-
     font-size: 30px;
     color: #0008ff;
+}
 
+.info {
+    color: #d8c4ba;
+    font-size: 30px;
 }

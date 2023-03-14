@@ -13,11 +13,10 @@ function App() {
     let [max, setMax] = useState<number>(maxValue);
     let [min, setMin] = useState<number>(minValue);
 
-    let [count, setCount] = useState(minValue);
+    let [count, setCount] = useState<number | string>(minValue);
 
 
-
-    const hasError:boolean = minValue == maxValue || minValue < 0 || minValue > maxValue
+    const hasError: boolean = minValue == maxValue || minValue < 0 || minValue > maxValue
 
 
     const updateSettings = () => {
@@ -52,8 +51,8 @@ function App() {
                              updateSettings={updateSettings}
                              maxValue={maxValue}
                              minValue={minValue}
-
-
+                             setCount={setCount}
+                             hasError={hasError}
             />
 
         </div>

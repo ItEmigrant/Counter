@@ -55,8 +55,9 @@ input {
     color: #61dafb;
 }
 
-.input1 {
+.inputError {
     border: 4px red solid;
     background-color: deeppink;
 
 }
+
