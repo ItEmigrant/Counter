@@ -44,7 +44,6 @@ input {
 }
 
 .maxValue {
-
     font-size: 130px;
     color: red;
 
@@ -56,8 +55,8 @@ input {
 }
 
 .inputError {
-    border: 4px red solid;
-    background-color: deeppink;
+    border: 3px red solid;
+    background-color:magenta;
 
 }
 

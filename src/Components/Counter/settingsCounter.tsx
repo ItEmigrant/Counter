@@ -17,22 +17,22 @@ type SettingsCounterPropsType = {
 
 export const SettingsCounter = (props: SettingsCounterPropsType) => {
 
-    let [inputMinError, setInputMinError] = useState<boolean>(false);
-    let [inputMaxError, setInputMaxError] = useState<boolean>(false);
+    let [inputError, setInputError] = useState<[boolean,boolean]>([false,false]);
 
     const updateMinValue = (e: ChangeEvent<HTMLInputElement>) => {
-
         props.setCount('Type value and enter settings')
         props.setMinValue(Number(e.currentTarget.value))
-        Number(e.currentTarget.value) == props.maxValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) > props.maxValue ? setInputMinError(true) : setInputMinError(false)
-
+        Number(e.currentTarget.value) == props.maxValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) > props.maxValue ? setInputError([true,false]) : setInputError([false,false])
     }
 
     const updateMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.setMaxValue(Number(e.currentTarget.value))
         props.setCount('Type value and enter settings')
-        Number(e.currentTarget.value) == props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputMaxError(true) : setInputMaxError(false)
+        Number(e.currentTarget.value) == props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputError([false,true]) : setInputError([false, false])
     }
+
+
+
 
 
     const addSettings = () => {
@@ -47,7 +47,7 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
                     <div>
                         max value:
                         <input
-                            className={inputMaxError ? s.inputError : ''}
+                            className={inputError[1] ? s.inputError : ''}
                             type="number"
                             value={props.maxValue}
                             onChange={updateMaxValue}
@@ -60,7 +60,7 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
                     <div>
                         min value:
                         <input
-                            className={inputMinError ? s.inputError : ''}
+                            className={inputError[0] ? s.inputError : ''}
                             type="number"
                             value={props.minValue}
                             onChange={updateMinValue}/>

@@ -18,40 +18,36 @@ export const Counter = (props: CounterPropsType) => {
 
     const onClickIncHandler = () => {
         props.setCount(+props.count + 1)
-
     }
+
     const onClickResetHandler = () => {
         props.setCount(props.minValue)
     }
 
 
     return (
-
         <div className={s.body}> COUNTER
             <div className={s.count}>
                 <div
                     className={props.count === props.maxValue ? s.maxValue : props.count === props.minValue ? s.minValue : ''}>
 
                     {/*     <div> {props.error ? <div className={s.error}>{props.error}</div> : props.count} </div> ///realised with useEffect*/}
-
-
                     {
-                        props.hasError
-                            ? <div className={s.error}>
-                                Incorrect Value!
+                        props.hasError ?
+                            <div
+                                className={s.error}>Incorrect Value!
+                            </div> :
+                            <div
+                                className={props.count === 'Type value and enter settings' ? s.info : ''}>{props.count}
                             </div>
-                            : <div
-                                className={props.count === 'Type value and enter settings' ? s.info : ''}>{props.count}</div>
                     }
                 </div>
-
             </div>
             - home work -
             <div className={s.button}>
                 <div>
                     <Button name={"INC"} callBack={onClickIncHandler}
                             disabled={props.count === props.maxValue}/>
-
                 </div>
                 {/*<button
                         onClick={onClickIncHandler}
@@ -65,6 +61,7 @@ export const Counter = (props: CounterPropsType) => {
                     {/*<button onClick={onClickResetHandler}
                             disabled={props.count === props.minValue}>Reset
                     </button>*/}
+
                 </div>
             </div>
 

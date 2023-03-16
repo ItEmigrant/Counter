@@ -37,6 +37,7 @@ button {
     border-radius: 7px;
     background-color: mediumspringgreen;
     color: red;
+
 }
 
 .maxValue{
@@ -56,4 +57,9 @@ button {
 .info {
     color: #d8c4ba;
     font-size: 30px;
+}
+button:disabled {
+    color: lightsteelblue;
+    background-color: darkgrey;
+
 }
