@@ -17,22 +17,25 @@ type SettingsCounterPropsType = {
 
 export const SettingsCounter = (props: SettingsCounterPropsType) => {
 
-    let [inputError, setInputError] = useState<[boolean,boolean]>([false,false]);
+    let [inputError, setInputError] = useState<[boolean, boolean]>([false, false]);
 
     const updateMinValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setCount('Type value and enter settings')
-        props.setMinValue(Number(e.currentTarget.value))
-        Number(e.currentTarget.value) == props.maxValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) > props.maxValue ? setInputError([true,false]) : setInputError([false,false])
-    }
+        const currentValue = Number(e.currentTarget.value);
+        props.setCount('Type value and enter settings');
+        props.setMinValue(currentValue);
+
+        if (currentValue === props.maxValue || currentValue < 0 || currentValue > props.maxValue) {
+            setInputError([true, false]);
+        } else {
+            setInputError([false, false]);
+        }
+    }; // function refactor the GPT Chat
 
     const updateMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         props.setMaxValue(Number(e.currentTarget.value))
         props.setCount('Type value and enter settings')
-        Number(e.currentTarget.value) == props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputError([false,true]) : setInputError([false, false])
+        Number(e.currentTarget.value) == props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputError([false, true]) : setInputError([false, false])
     }
-
-
-
 
 
     const addSettings = () => {
