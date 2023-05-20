@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import './App.css';
 import {Counter} from "./Components/Counter/Counter";
@@ -8,10 +8,10 @@ import {SettingsCounter} from "./Components/Counter/settingsCounter";
 function App() {
 
     const [maxValue, setMaxValue] = useState(() => {
-        return Number(localStorage.getItem('CvMAX')) || 5
+        return /*Number(localStorage.getItem('CvMAX')) ||*/ 5
     });
     const [minValue, setMinValue] = useState(() => {
-        return Number(localStorage.getItem('CvMIN')) || 0
+        return /*Number(localStorage.getItem('CvMIN')) ||*/ 0
     });
 
 
@@ -24,7 +24,7 @@ function App() {
     const hasError: boolean = minValue == maxValue || minValue < 0 || minValue > maxValue
 
 
-    useEffect(() => {
+    /*useEffect(() => {
         let valueAsString = localStorage.getItem('CvMAX')
 
         if (valueAsString) {
@@ -41,12 +41,12 @@ function App() {
         }
 
 
-    }, [])
+    }, [])*/
 
-    useEffect(() => {
+    /*useEffect(() => {
         localStorage.setItem('CvMAX', JSON.stringify(maxValue));
         localStorage.setItem('CvMIN', JSON.stringify(minValue));
-    }, [maxValue, minValue])
+    }, [maxValue, minValue])*/
 
 
     const updateSettings = () => {
