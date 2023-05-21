@@ -1,40 +1,28 @@
-export type updateSettingsType = ReturnType<typeof updateSettingsAC>
-export type  counterActionType = updateSettingsType
-
-const initialState={
-    minValue:0,
-    maxValue:5
+export type State = {
+    count: number | string;
 };
 
-export const counterReducer = (state=initialState,  action: counterActionType) => {
+type incrementACType = ReturnType<typeof incrementAC>
 
-    switch (action.type) {
-        case 'UPDATE-SETTINGS':
-        return {
+export type CommonActionType = incrementACType;
 
-        }
-    }
-
-    switch (action.type) {
-        case 'RESET-COUNTER':
-            return {
-
-            }
-    }
-
-    switch (action.type) {
-        case 'COUNTER-PLUS':
-            return {
-
-            }
-    }
-
-
+const initialState: State = {
+    count: 0,
 };
 
-export const updateSettingsAC = (minValue: number, maxValue: number) => {
+export const counterReducer = (state = initialState, action: CommonActionType): State => {
+    switch (action.type) {
+        case "INCREMENT":
+            return {...state, count: +state.count + 1};
+
+        default:
+            return state;
+    }
+};
+
+export const incrementAC = (count: number | string) => {
     return {
-        type: 'UPDATE-SETTINGS',
-        minValue, maxValue
+        type: "INCREMENT",
+        count
     } as const
 }

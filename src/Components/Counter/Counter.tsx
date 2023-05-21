@@ -1,6 +1,9 @@
 import React from 'react';
 import s from './Counter.module.css'
 import {Button} from "./UniversalButton";
+import {useDispatch} from "react-redux";
+import {incrementAC} from "../Reducer/CounterReducer";
+
 
 
 type CounterPropsType = {
@@ -14,10 +17,12 @@ type CounterPropsType = {
 }
 
 export const Counter = (props: CounterPropsType) => {
+    const dispatch = useDispatch()
 
 
     const onClickIncHandler = () => {
-        props.setCount(+props.count + 1)
+       /* props.setCount(+props.count + 1)*/
+        dispatch(incrementAC(props.count))
     }
 
     const onClickResetHandler = () => {
