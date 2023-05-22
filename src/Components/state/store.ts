@@ -8,7 +8,6 @@ const rootReducer = combineReducers({
 
 export const store = legacy_createStore(rootReducer)
 
-
 // @ts-ignore
 window.store = store;
 

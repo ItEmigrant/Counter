@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/Counter/settingsCounter";
+import {useSelector} from "react-redux";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         return /*Number(localStorage.getItem('CvMIN')) ||*/ 0
     });
 
-
+    const countValue = useSelector((state:any) => state.counter)
     const [max, setMax] = useState(maxValue);
     const [min, setMin] = useState(minValue);
 
@@ -68,7 +69,7 @@ function App() {
     return (
         <div className="App">
             <Counter maxValue={max} minValue={min}
-                     count={count} setCount={setCount}
+                     count={countValue.count} setCount={setCount}
                      min={minValue} max={maxValue}
                      hasError={hasError}
 

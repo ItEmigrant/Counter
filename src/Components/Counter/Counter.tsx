@@ -5,7 +5,6 @@ import {useDispatch} from "react-redux";
 import {incrementAC} from "../Reducer/CounterReducer";
 
 
-
 type CounterPropsType = {
     count: number | string
     minValue: number
@@ -17,11 +16,11 @@ type CounterPropsType = {
 }
 
 export const Counter = (props: CounterPropsType) => {
+
     const dispatch = useDispatch()
 
-
     const onClickIncHandler = () => {
-       /* props.setCount(+props.count + 1)*/
+        /* props.setCount(+props.count + 1)*/
         dispatch(incrementAC(props.count))
     }
 
