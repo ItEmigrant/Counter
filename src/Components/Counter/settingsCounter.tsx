@@ -1,28 +1,28 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from "./SettingsCounter.module.css";
 import {Button} from "./UniversalButton";
+import {useDispatch} from "react-redux";
+import {updateMaxValueAC, updateMinValueAC} from "../Reducer/SettingsReducer";
+import {incrementAC} from "../Reducer/CounterReducer";
 
 
 type SettingsCounterPropsType = {
-    setMinValue: (newValue: number) => void
-    setMaxValue: (newValue: number) => void
     updateSettings: () => void
-    maxValue: number
+    maxValue: number|string
     minValue: number
-    setCount: (count: number | string) => void
     hasError: boolean
-
 
 }
 
 export const SettingsCounter = (props: SettingsCounterPropsType) => {
+    const dispatch = useDispatch();
 
     let [inputError, setInputError] = useState<[boolean, boolean]>([false, false]);
 
     const updateMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         const currentValue = Number(e.currentTarget.value);
-        props.setCount('Type value and enter settings');
-        props.setMinValue(currentValue);
+        dispatch(incrementAC('Type value and enter settings'));
+        dispatch(updateMinValueAC(currentValue));
 
         if (currentValue === props.maxValue || currentValue < 0 || currentValue > props.maxValue) {
             setInputError([true, false]);
@@ -32,15 +32,14 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
     }; // function refactor the GPT Chat
 
     const updateMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxValue(Number(e.currentTarget.value))
-        props.setCount('Type value and enter settings')
+        dispatch(updateMaxValueAC((Number(e.currentTarget.value))))
+       /* dispatch(incrementAC('Type value and enter settings'))*/
         Number(e.currentTarget.value) == props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputError([false, true]) : setInputError([false, false])
     }
 
 
     const addSettings = () => {
         props.updateSettings()
-
     }
 
     return (

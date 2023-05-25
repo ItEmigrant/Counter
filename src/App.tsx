@@ -1,59 +1,72 @@
-import React, {useState} from 'react';
-
+import React from 'react';
 import './App.css';
 import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/Counter/settingsCounter";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./Components/state/store";
+import {updateMaxValueAC, updateMinValueAC, updateSettingsAC} from "./Components/Reducer/SettingsReducer";
+import {incrementAC, resetAC} from "./Components/Reducer/CounterReducer";
 
 
 function App() {
 
-    const [maxValue, setMaxValue] = useState(() => {
-        return /*Number(localStorage.getItem('CvMAX')) ||*/ 5
-    });
-    const [minValue, setMinValue] = useState(() => {
-        return /*Number(localStorage.getItem('CvMIN')) ||*/ 0
-    });
+    /* const [maxValue, setMaxValue] = useState(() => {
+         return /!*Number(localStorage.getItem('CvMAX')) ||*!/ 5
+     });
+     const [minValue, setMinValue] = useState(() => {
+         return /!*Number(localStorage.getItem('CvMIN')) ||*!/ 0
+     });*/
 
-    const countValue = useSelector((state:any) => state.counter)
-    const [max, setMax] = useState(maxValue);
-    const [min, setMin] = useState(minValue);
+    const settingsMinValue = useSelector((state: AppRootStateType) => state.settings)
 
-    const [count, setCount] = useState<number | string>(minValue);
+    const settingsMaxValue = useSelector((state: AppRootStateType) => state.settings)
 
+    const countValue = useSelector((state: AppRootStateType) => state.counter)
 
-    const hasError: boolean = minValue == maxValue || minValue < 0 || minValue > maxValue
+    const countMinValue = useSelector((state: AppRootStateType) => state.counter)
 
+    /* const [max, setMax] = useState(settingsMaxValue);
+     const [min, setMin] = useState(settingsMinValue);*/
 
-/*    useEffect(() => {
-        let valueAsString = localStorage.getItem('CvMAX')
-
-        if (valueAsString) {
-            let newStorageValue = JSON.parse(valueAsString)
-
-            setMaxValue(newStorageValue)
-
-        }
-
-        let valueAsStringMin = localStorage.getItem('CvMIN')
-        if (valueAsStringMin) {
-            let newStorageValueMin = JSON.parse(valueAsStringMin)
-            setMinValue(newStorageValueMin)
-        }
+    /*const [count, setCount] = useState<number | string>(minValue);*/
 
 
-    }, [])
+    const hasError: boolean = settingsMinValue.minValue == settingsMaxValue.maxValue || settingsMinValue.minValue < 0 || settingsMinValue.minValue > settingsMaxValue.maxValue
 
-    useEffect(() => {
-        localStorage.setItem('CvMAX', JSON.stringify(maxValue));
-        localStorage.setItem('CvMIN', JSON.stringify(minValue));
-    }, [maxValue, minValue])*/
 
+    /*    useEffect(() => {
+            let valueAsString = localStorage.getItem('CvMAX')
+
+            if (valueAsString) {
+                let newStorageValue = JSON.parse(valueAsString)
+
+                setMaxValue(newStorageValue)
+
+            }
+
+            let valueAsStringMin = localStorage.getItem('CvMIN')
+            if (valueAsStringMin) {
+                let newStorageValueMin = JSON.parse(valueAsStringMin)
+                setMinValue(newStorageValueMin)
+            }
+
+
+        }, [])
+
+        useEffect(() => {
+            localStorage.setItem('CvMAX', JSON.stringify(maxValue));
+            localStorage.setItem('CvMIN', JSON.stringify(minValue));
+        }, [maxValue, minValue])*/
+    const dispatch = useDispatch()
 
     const updateSettings = () => {
-        setMin(minValue)
-        setMax(maxValue)
-        setCount(minValue)
+
+
+        dispatch(incrementAC(countValue.countValue))
+
+        /*setMin(minValue)
+        setMax(maxValue)*/
+        /*setCount(minValue)*/
     }
 
 
@@ -68,20 +81,18 @@ function App() {
 
     return (
         <div className="App">
-            <Counter maxValue={max} minValue={min}
-                     count={countValue.count} setCount={setCount}
-                     min={minValue} max={maxValue}
+            <Counter maxValue={settingsMaxValue.maxValue} minValue={countMinValue.minValue}
+                     count={countValue.countValue} /*setCount={setCount}*/
                      hasError={hasError}
 
             />
             <br/>
-            <SettingsCounter setMinValue={setMinValue}
-                             setMaxValue={setMaxValue}
-                             updateSettings={updateSettings}
-                             maxValue={maxValue}
-                             minValue={minValue}
-                             setCount={setCount}
-                             hasError={hasError}
+            <SettingsCounter
+                updateSettings={updateSettings}
+                maxValue={settingsMaxValue.maxValue}
+                minValue={settingsMinValue.minValue}
+                /* setCount={setCount}*/
+                hasError={hasError}
             />
 
 

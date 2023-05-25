@@ -2,16 +2,14 @@ import React from 'react';
 import s from './Counter.module.css'
 import {Button} from "./UniversalButton";
 import {useDispatch} from "react-redux";
-import {incrementAC} from "../Reducer/CounterReducer";
+import {incrementAC, resetAC} from "../Reducer/CounterReducer";
 
 
 type CounterPropsType = {
     count: number | string
     minValue: number
-    maxValue: number
-    setCount: (count: number | string) => void
-    min: number
-    max: number
+    maxValue: number | string
+    /*setCount: (count: number | string) => void*/
     hasError: boolean
 }
 
@@ -25,9 +23,9 @@ export const Counter = (props: CounterPropsType) => {
     }
 
     const onClickResetHandler = () => {
-        props.setCount(props.minValue)
+        /* props.setCount(props.minValue)*/
+        dispatch(resetAC(props.minValue))
     }
-
 
     return (
         <div className={s.body}> COUNTER
