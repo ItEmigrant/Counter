@@ -4,8 +4,8 @@ import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/Counter/settingsCounter";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./Components/state/store";
-import {updateMaxValueAC, updateMinValueAC, updateSettingsAC} from "./Components/Reducer/SettingsReducer";
-import {incrementAC, resetAC} from "./Components/Reducer/CounterReducer";
+import {updateSettingsAC} from "./Components/Reducer/SettingsReducer";
+import {setAC} from "./Components/Reducer/CounterReducer";
 
 
 function App() {
@@ -23,7 +23,6 @@ function App() {
 
     const countValue = useSelector((state: AppRootStateType) => state.counter)
 
-    const countMinValue = useSelector((state: AppRootStateType) => state.counter)
 
     /* const [max, setMax] = useState(settingsMaxValue);
      const [min, setMin] = useState(settingsMinValue);*/
@@ -60,9 +59,8 @@ function App() {
     const dispatch = useDispatch()
 
     const updateSettings = () => {
-
-
-        dispatch(incrementAC(countValue.countValue))
+        dispatch(updateSettingsAC(settingsMinValue.minValue, settingsMaxValue.maxValue))
+        dispatch(setAC(settingsMinValue.minValue))
 
         /*setMin(minValue)
         setMax(maxValue)*/
@@ -81,7 +79,7 @@ function App() {
 
     return (
         <div className="App">
-            <Counter maxValue={settingsMaxValue.maxValue} minValue={countMinValue.minValue}
+            <Counter maxValue={settingsMaxValue.maxValue} minValue={settingsMinValue.updateMin}
                      count={countValue.countValue} /*setCount={setCount}*/
                      hasError={hasError}
 

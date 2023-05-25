@@ -3,7 +3,7 @@ import s from "./SettingsCounter.module.css";
 import {Button} from "./UniversalButton";
 import {useDispatch} from "react-redux";
 import {updateMaxValueAC, updateMinValueAC} from "../Reducer/SettingsReducer";
-import {incrementAC} from "../Reducer/CounterReducer";
+import {setAC} from "../Reducer/CounterReducer";
 
 
 type SettingsCounterPropsType = {
@@ -21,7 +21,7 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
 
     const updateMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         const currentValue = Number(e.currentTarget.value);
-        dispatch(incrementAC('Type value and enter settings'));
+        dispatch(setAC('Type value and enter settings'));
         dispatch(updateMinValueAC(currentValue));
 
         if (currentValue === props.maxValue || currentValue < 0 || currentValue > props.maxValue) {
@@ -33,13 +33,13 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
 
     const updateMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(updateMaxValueAC((Number(e.currentTarget.value))))
-       /* dispatch(incrementAC('Type value and enter settings'))*/
+        dispatch(setAC('Type value and enter settings'))
         Number(e.currentTarget.value) == props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputError([false, true]) : setInputError([false, false])
     }
 
 
     const addSettings = () => {
-        props.updateSettings()
+       return  props.updateSettings()
     }
 
     return (
