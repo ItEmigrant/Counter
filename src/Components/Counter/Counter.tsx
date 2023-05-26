@@ -9,7 +9,6 @@ type CounterPropsType = {
     count: number | string
     minValue: number
     maxValue: number | string
-    /*setCount: (count: number | string) => void*/
     hasError: boolean
 }
 
