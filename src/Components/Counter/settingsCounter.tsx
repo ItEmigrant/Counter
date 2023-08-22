@@ -33,7 +33,7 @@ export const SettingsCounter = (props: SettingsCounterPropsType) => {
     const updateMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(setAC('Type value and enter settings'))
         dispatch(updateMaxValueAC((Number(e.currentTarget.value))))
-        Number(e.currentTarget.value) == props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputError([false, true]) : setInputError([false, false])
+        Number(e.currentTarget.value) === props.minValue || Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) < props.minValue ? setInputError([false, true]) : setInputError([false, false])
     }
 
     const addSettings = () => {

@@ -1,4 +1,4 @@
-export type State = {
+export type InitialStateType = {
     minValue: number
     maxValue: number |string
   };
@@ -10,12 +10,12 @@ type updateMaxValueACType = ReturnType<typeof updateMaxValueAC>
 
 export type CommonActionType = updateMinValueACType | updateMaxValueACType
 
-const initialState: State = {
+const initialState: InitialStateType = {
     minValue: 0,
     maxValue: 5
 };
 
-export const settingsReducer = (state = initialState, action: CommonActionType): State => {
+export const settingsReducer = (state = initialState, action: CommonActionType): InitialStateType => {
     switch (action.type) {
         case "UPDATE-MIN-VALUE":
             return {...state, minValue: action.currentValue};

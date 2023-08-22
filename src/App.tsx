@@ -12,16 +12,16 @@ function App() {
 
     const countValue = useSelector((state: AppRootStateType) => state.counter)
 
-    const hasError: boolean = settingsValue.minValue == settingsValue.maxValue || settingsValue.minValue < 0 || settingsValue.minValue > settingsValue.maxValue
+    const hasError: boolean = settingsValue.minValue === settingsValue.maxValue || settingsValue.minValue < 0 || settingsValue.minValue > settingsValue.maxValue
 
 
-    /*useEffect(()=>{
-        if(minValue === maxValue || minValue < 0 || minValue > maxValue){
+   /* useEffect(()=>{
+        if(settingsValue.minValue === settingsValue.maxValue || settingsValue.minValue < 0 || settingsValue.minValue > settingsValue.maxValue){
             setError("Incorrect Value!")
         } else {
             setError('')
         }
-    }, [minValue, maxValue])*/ //realised with useEffect
+    }, [minValue, maxValue]) //realised with useEffect*/
 
 
     return (
