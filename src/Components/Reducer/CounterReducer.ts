@@ -1,6 +1,6 @@
 export type InitialStateType = {
     countValue: number | string;
-    minValue: number
+
 };
 
 
@@ -12,8 +12,7 @@ type  setFromLocalStorageACType = ReturnType<typeof setFromLocalStorageAC>
 export type CommonActionType = incrementACType | resetACType | setACType | setFromLocalStorageACType;
 
 const initialState: InitialStateType = {
-    countValue: 0,
-    minValue: 0
+    countValue: 0
 };
 
 export const counterReducer = (state = initialState, action: CommonActionType): InitialStateType => {
