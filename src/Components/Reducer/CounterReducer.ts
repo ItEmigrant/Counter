@@ -7,10 +7,11 @@ export type InitialStateType = {
 type incrementACType = ReturnType<typeof incrementAC>
 type resetACType = ReturnType<typeof resetAC>
 type setACType = ReturnType<typeof setAC>
+type  setFromLocalStorageACType = ReturnType<typeof setFromLocalStorageAC>
 
-export type CommonActionType = incrementACType | resetACType | setACType;
+export type CommonActionType = incrementACType | resetACType | setACType | setFromLocalStorageACType;
 
-const initialState:InitialStateType = {
+const initialState: InitialStateType = {
     countValue: 0,
     minValue: 0
 };
@@ -26,6 +27,8 @@ export const counterReducer = (state = initialState, action: CommonActionType): 
         case "SET-COUNT":
             return {...state, countValue: action.Value}
 
+        case "SET-STORAGE":
+            return {...state, countValue: action.valueStorage}
 
         default:
             return state;
@@ -50,5 +53,12 @@ export const setAC = (Value: number | string) => {
     return {
         type: "SET-COUNT",
         Value
+    } as const
+}
+
+export const setFromLocalStorageAC = (valueStorage: number | string) => {
+    return {
+        type: "SET-STORAGE",
+        valueStorage
     } as const
 }
